@@ -25,12 +25,19 @@ class GildedRose
         $this->filters[] = new FilterConjured();
     }
 
+    /**
+     *
+     * @param  string $name
+     * @param  int $quality
+     * @param  int $sellIn
+     * @return GildedRose
+     */
     public static function of($name, $quality, $sellIn)
     {
         return new static($name, $quality, $sellIn);
     }
 
-    public function tick()
+    public function tick(): void
     {
         foreach ($this->filters as $filter) {
             if ($filter->match($this->name)) {
@@ -42,7 +49,7 @@ class GildedRose
         $this->decreaseSellIn();
     }
 
-    public function decreaseQuality()
+    public function decreaseQuality(): void
     {
         if ($this->quality <= 0) {
             return;
@@ -58,7 +65,7 @@ class GildedRose
         }
     }
 
-    public function decreaseSellIn()
+    public function decreaseSellIn(): void
     {
         $this->sellIn--;
     }

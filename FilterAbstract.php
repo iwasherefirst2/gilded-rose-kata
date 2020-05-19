@@ -22,7 +22,12 @@ abstract class FilterAbstract
         return $this->sellin;
     }
 
-    public function apply(GildedRose $item)
+    /**
+     *
+     * @param  GildedRose $item
+     * @return void
+     */
+    public function apply(GildedRose $item): void
     {
         if ($this->applyQuality()) {
             $item->decreaseQuality();
